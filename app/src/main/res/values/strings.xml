@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">SoundClound_03</string>
+    <string name="title_home">Home</string>
+    <string name="title_playlist">Playlist</string>
+    <string name="title_local">Local</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="genres_all">All</string>
+    <string name="genres_classic">Classic</string>
+    <string name="genres_country">Country</string>
+    <string name="genres_depp_house">Deep House</string>
+    <string name="genres_pop">POP</string>
+    <string name="genres_popblas">PopBlas</string>
+    <string name="genres_rock">Rock</string>
+    <string name="genres_edm">EDM</string>
+    <string name="genres_electronic">Electronic</string>
+    <string name="image_track">image_track</string>
+    <string name="image_more_info">moreinfo</string>
+    <string name="title_add_album">Add Album</string>
+    <string name="msg_name_album">Name Album</string>
+    <string name="msg_err_name_exist">Album name  is exist !!</string>
+    <string name="msg_err_name_null">Name album is empty</string>
+    <string name="song">Songs</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_rename">Rename</string>
+    <string name="msg_rename_album">Rename Album</string>
+    <string name="msg_notifi_favorite_track">Favorite Track</string>
+    <string name="msg_notifi_favorite_track_suggest">Add favorite suggest !</string>
+    <string name="msg_notifi_favorite_track_fail">Add favorite fail !</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="msg_delele_album">Do you want delete album ? </string>
+    <string name="msg_remove_track_album">Do you want remove track ? </string>
+    <string name="action_add">Add</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_add_favorite">Add Favorite</string>
+
+    <string name="title_add_favorite">Thêm vào danh sách bài hát yêu thích</string>
+    <string name="title_exist_favorite">Bài hát đã có trong danh sách yêu thích ! </string>
+    <string name="title_download">Tải bài hát về máy</string>
+    <string name="title_like">like track</string>
+    <string name="title_track">imagetrack</string>
+
+    <string name="title_back">back</string>
+    <string name="title_loop">loop</string>
+    <string name="title_previous">previous</string>
+    <string name="title_pause">pause</string>
+    <string name="title_next">next</string>
+    <string name="title_shuffle">shuffle</string>
+    <string name="title_cantdownload">Bài hát nằm trong danh sách hạn chế</string>
+    <string name="title_candownload">Tải bài hát về máy</string>
+    <string name="img_notifi">img_notifi</string>
+    <string name="title_add_to_album">Add to album</string>
+    <string name="album_detail">Detail Album</string>
+
+</resources>

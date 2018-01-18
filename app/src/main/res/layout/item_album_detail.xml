@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.soundclound.screen.detailalbum.ItemDetailAlbumViewModel" />
+        <variable
+            name="track"
+            type="com.framgia.soundclound.data.model.Track"/>
+        <variable
+            name="listener"
+            type="com.framgia.soundclound.screen.BaseOnItemClick" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_72"
+        android:background="@color/background"
+        android:onClick="@{viewModel::onClickTrack}">
+
+        <ImageView
+            android:id="@+id/imv_track"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginStart="@dimen/dp_8"
+            android:contentDescription="@string/image_track"
+            app:imgResource="@{viewModel.url}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_title_track"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_track"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="@{viewModel.title}"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintRight_toLeftOf="@id/image_view_more"
+            app:layout_constraintLeft_toRightOf="@id/imv_track"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="4dp"
+            android:text="@{viewModel.artist}"
+            android:textColor="@color/textFade"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintLeft_toRightOf="@id/imv_track"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_track" />
+
+        <ImageView
+            android:id="@+id/image_view_more"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:contentDescription="@string/image_more_info"
+            android:onClick="@{() -> listener.onIconMoreClick( imageViewMore, track)}"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

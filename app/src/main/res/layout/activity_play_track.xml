@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.soundclound.screen.playtrack.PlayTrackViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_item_recycleview"
+        tools:context="com.framgia.soundclound.screen.playtrack.PlayTrackActivity">
+
+        <ImageView
+            android:id="@+id/image_view_back"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_margin="@dimen/dp_16"
+            android:contentDescription="@string/title_back"
+            android:onClick="@{viewModel::onClickBack}"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_track_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_28"
+            android:layout_marginRight="@dimen/dp_28"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="center"
+            android:text="@{viewModel.title}"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_back" />
+
+        <TextView
+            android:id="@+id/text_view_artist_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{viewModel.artist}"
+            android:textColor="@color/textFade"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_view_back"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_track_name" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_view_play_track"
+            imgResource="@{viewModel.imageTrack}"
+            setAni="@{viewModel.play}"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="@dimen/dp_250"
+            android:layout_marginTop="@dimen/dp_16"
+            android:contentDescription="@string/title_track"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_artist_track" />
+
+        <SeekBar
+            android:id="@+id/seek_bar_play_track"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginStart="@dimen/dp_8"
+            android:background="@drawable/background_item_recycleview"
+            android:max="100"
+            android:onStopTrackingTouch="@{viewModel::onStopTrackingTouch}"
+            android:progress="@{viewModel.progressSeekBar}"
+            app:layout_constraintBottom_toTopOf="@id/image_pause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_play_track" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{viewModel.curentDuration}"
+            android:textColor="@color/color_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seek_bar_play_track" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{viewModel.totalDuration}"
+            android:textColor="@color/color_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seek_bar_play_track" />
+
+        <ImageView
+            android:id="@+id/image_view_loop"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:contentDescription="@string/title_loop"
+            android:onClick="@{viewModel::onClickLoop}"
+            android:src="@drawable/ic_loop_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/image_view_previous" />
+
+        <ImageView
+            android:id="@+id/image_view_previous"
+            android:layout_width="@dimen/dp_56"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:contentDescription="@string/title_previous"
+            android:onClick="@{viewModel::onClickPrevious}"
+            android:src="@drawable/ic_skip_previous_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_view_loop"
+            app:layout_constraintRight_toLeftOf="@id/image_pause" />
+
+        <ImageView
+            android:id="@+id/image_pause"
+            android:layout_width="@dimen/dp_56"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:contentDescription="@string/title_pause"
+            android:onClick="@{viewModel::onClickPause}"
+            android:src="@drawable/ic_pause_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_view_previous"
+            app:layout_constraintRight_toLeftOf="@id/image_next" />
+
+        <ImageView
+            android:id="@+id/image_next"
+            android:layout_width="@dimen/dp_56"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:contentDescription="@string/title_next"
+            android:onClick="@{viewModel::onClickNext}"
+            android:src="@drawable/ic_skip_next_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_pause"
+            app:layout_constraintRight_toLeftOf="@id/image_shuffle" />
+
+        <ImageView
+            android:id="@+id/image_shuffle"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:contentDescription="@string/title_shuffle"
+            android:onClick="@{viewModel::onClickShuffle}"
+            android:src="@drawable/ic_shuffle_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_next"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
