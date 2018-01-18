@@ -28,25 +28,12 @@ public class GenreDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_genre_detail);
         ActivityGenreDetailBinding activityGenreDetailBinding = DataBindingUtil
                 .setContentView(this, R.layout.activity_genre_detail);
         GenreDetailViewModel mViewModel = new GenreDetailViewModel(this,
                 (Genre) getIntent().getSerializableExtra(Constant.EXTRA_GENRE));
         activityGenreDetailBinding.setViewModel(mViewModel);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }

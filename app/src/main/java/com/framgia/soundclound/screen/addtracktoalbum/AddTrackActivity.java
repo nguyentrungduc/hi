@@ -44,6 +44,7 @@ public class AddTrackActivity extends AppCompatActivity {
                 getIntent().getIntExtra(Constant.EXTRA_ID_ALBUM, 0));
         activityAddTrackBinding.setViewModel(mViewModel);
         mViewModel.setKeyOpenActivity(getKeyOpenActivity());
+
         getSupportActionBar().setTitle(R.string.title_add_album);
     }
 

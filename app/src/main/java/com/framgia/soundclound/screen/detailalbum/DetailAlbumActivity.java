@@ -27,9 +27,6 @@ public class DetailAlbumActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActivityAlbumDetailBinding activityAlbumDetailBinding = DataBindingUtil
                 .setContentView(this, R.layout.activity_album_detail);
         Intent intent = getIntent();
@@ -38,6 +35,9 @@ public class DetailAlbumActivity extends AppCompatActivity {
                 Constant.VALUE_ID_ALBUM_NULL);
         mDetailAlbumModelView = new DetailAlbumModelView(this, idAlbum);
         activityAlbumDetailBinding.setViewModelAlbum(mDetailAlbumModelView);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -46,5 +46,11 @@ public class DetailAlbumActivity extends AppCompatActivity {
         if (requestCode == REQUEST_UPDATE_DATA) {
             mDetailAlbumModelView.onUpdate();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }
