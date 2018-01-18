@@ -8,4 +8,5 @@ import com.framgia.soundclound.data.model.Album;
 
 public interface Calback {
     void onResult(Album album);
+    void onAddNewAlbum(boolean b);
 }

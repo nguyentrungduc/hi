@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.framgia.soundclound.R;
 import com.framgia.soundclound.data.model.Track;
-import com.framgia.soundclound.databinding.FragmentMoreTrackBinding;
 import com.framgia.soundclound.databinding.FragmentMoreTrackLocalBinding;
 import com.framgia.soundclound.util.Constant;
 

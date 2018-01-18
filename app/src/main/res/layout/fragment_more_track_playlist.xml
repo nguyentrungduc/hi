@@ -1,0 +1,153 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.soundclound.screen.moretrack.MoreTrackViewModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        android:background="@color/background_diaglog">
+
+        <ImageView
+            android:id="@+id/image_view_more"
+            imgResource="@{viewModel.url}"
+            android:layout_width="@dimen/dp_45"
+            android:layout_height="@dimen/dp_45"
+            android:layout_marginTop="@dimen/dp_16"
+            android:contentDescription="@string/title_track"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/text_view_title_track"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_title_track"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_6"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_20"
+            android:singleLine="true"
+            android:text="@{viewModel.title}"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toRightOf="@id/image_view_more"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_6"
+            android:lines="1"
+            android:text="@{viewModel.artist}"
+            android:textColor="@color/textFade"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintLeft_toRightOf="@id/image_view_more"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title_track" />
+
+        <ImageView
+            android:id="@+id/image_view_like"
+            setImage="@{viewModel.favorite}"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginStart="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_14"
+            android:contentDescription="@string/title_like"
+            android:onClick="@{viewModel::onClickLike}"
+            android:src="@drawable/ic_favorite_border_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_more" />
+
+        <TextView
+            android:id="@+id/text_view_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_18"
+            android:layout_marginTop="@dimen/dp_28"
+            android:text="@string/title_add_favorite"
+            android:textColor="@color/color_white"
+            app:layout_constraintLeft_toRightOf="@id/image_view_like"
+            app:layout_constraintTop_toBottomOf="@id/text_view_artist"
+            app:setText="@{viewModel.favorite}" />
+
+        <ImageView
+            android:id="@+id/image_view_download"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:layout_marginLeft="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_14"
+            android:contentDescription="@string/title_download"
+            android:onClick="@{viewModel::onClickRemovePlayLIst}"
+            android:src="@android:drawable/ic_delete"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_like" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:layout_marginLeft="@dimen/dp_28"
+            android:layout_marginTop="@dimen/dp_28"
+            android:text="@string/delete_track"
+            android:textColor="@color/color_white"
+            app:layout_constraintLeft_toRightOf="@id/image_view_download"
+            app:layout_constraintTop_toBottomOf="@id/text_view_like" />
+
+        <ImageView
+            android:id="@+id/image_view_add_to_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_16"
+            android:onClick="@{viewModel::onClickAddToList}"
+            android:src="@drawable/ic_playlist_add_check_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_add_tolist"
+            app:layout_constraintTop_toBottomOf="@id/image_view_download" />
+
+        <TextView
+            android:id="@+id/tv_add_tolist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_80"
+            android:layout_marginTop="16dp"
+            android:text="@string/them_vao_ds"
+            android:textColor="@color/color_white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_view_add_to_list"
+            app:layout_constraintTop_toBottomOf="@id/image_view_download" />
+
+        <ImageView
+            android:id="@+id/image_view_add_to_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_16"
+            android:onClick="@{viewModel::onClickAddToAlbum}"
+            android:src="@drawable/ic_playlist_add_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_add_to_list" />
+
+        <TextView
+            android:id="@+id/tv_add_to_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_80"
+            android:layout_marginTop="16dp"
+            android:text="@string/them_vao_other_album"
+            android:textColor="@color/color_white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_view_add_to_album"
+            app:layout_constraintTop_toBottomOf="@id/image_view_add_to_list" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

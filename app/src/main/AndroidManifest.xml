@@ -17,16 +17,16 @@
         <activity android:name=".screen.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.detailgenre.GenreDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".screen.detailalbum.DetailAlbumActivity"
-            />
-        <activity android:name=".screen.addtracktoalbum.AddTrackActivity"
-            android:noHistory="true"/>
+        <activity
+            android:name=".screen.detailgenre.GenreDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".screen.detailalbum.DetailAlbumActivity" />
+        <activity
+            android:name=".screen.addtracktoalbum.AddTrackActivity"
+            android:noHistory="true" />
         <activity
             android:name=".screen.playtrack.PlayTrackActivity"
             android:launchMode="singleTop" />

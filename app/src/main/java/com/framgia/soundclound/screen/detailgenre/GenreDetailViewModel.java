@@ -5,7 +5,6 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.ObservableField;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ScaleGestureDetector;
 
 import com.framgia.soundclound.BR;
 import com.framgia.soundclound.data.model.Genre;
