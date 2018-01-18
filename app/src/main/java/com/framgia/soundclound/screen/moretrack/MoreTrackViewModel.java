@@ -1,6 +1,5 @@
 package com.framgia.soundclound.screen.moretrack;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
@@ -47,7 +46,6 @@ public class MoreTrackViewModel extends BaseObservable {
     public static void setImage(ImageView view, boolean favorite) {
         if (favorite) {
             view.setImageResource(R.drawable.ic_favorite_red_24dp);
-            view.setClickable(false);
         } else {
             view.setImageResource(R.drawable.ic_favorite_white_24dp);
         }
@@ -87,24 +85,37 @@ public class MoreTrackViewModel extends BaseObservable {
     }
 
     public void onClickLike(View view) {
-        boolean resultAddFavorite = AlbumRepository.getInstance(mContext)
-                .addTrack(Constant.TRACKS_FAVORITE, mTrack);
-        if (resultAddFavorite) {
-            showNotification(R.string.msg_notifi_favorite_track_suggest);
+        mFavorite = AlbumRepository.getInstance(mContext)
+                .checkTrackExistAlbum(Constant.TRACKS_FAVORITE, mTrack);
+        if (mFavorite) {
+            handleUnFavorite();
         } else {
-            showNotification(R.string.msg_notifi_favorite_track_fail);
+            handleFavorite();
         }
 
+
     }
 
-    private void showNotification(int notifi) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(
-                mContext, R.style.Theme_AppCompat_Light_Dialog_Alert);
-        builder.setTitle(R.string.msg_notifi_favorite_track);
-        builder.setMessage(notifi);
-        builder.setNeutralButton(R.string.action_ok, null);
-        builder.show();
+    private void handleFavorite() {
+        boolean resultAddFavorite = AlbumRepository.getInstance(mContext)
+                .addTrack(Constant.TRACKS_FAVORITE, mTrack);
+        setFavorite(resultAddFavorite);
     }
+
+    private void handleUnFavorite() {
+        boolean resultRemoveTrack = AlbumRepository.getInstance(mContext)
+                .removeTrack(Constant.TRACKS_FAVORITE, mTrack);
+        setFavorite(!resultRemoveTrack);
+    }
+
+//    private void showNotification(int notifi) {
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(
+//                mContext, R.style.Theme_AppCompat_Light_Dialog_Alert);
+//        builder.setTitle(R.string.msg_notifi_favorite_track);
+//        builder.setMessage(notifi);
+//        builder.setNeutralButton(R.string.action_ok, null);
+//        builder.show();
+//    }
 
     public void onClickDownload(View view) {
         if (mTrack.isDownloadable()) {

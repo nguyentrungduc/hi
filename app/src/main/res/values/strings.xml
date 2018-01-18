@@ -33,6 +33,11 @@
     <string name="action_add">Add</string>
     <string name="action_remove">Remove</string>
     <string name="action_add_favorite">Add Favorite</string>
+    <string name="action_un_favorite">Remove Favorite</string>
+    <string name="action_add_playlist">Add Playlist</string>
+    <string name="action_add_playing">Add List Playing</string>
+    <string name="add_playing_su">Đã thêm vào danh sách phát ! </string>
+    <string name="add_playing_fl">Bài hát hiện đang có trong danh sách phát </string>
 
     <string name="title_add_favorite">Thêm vào danh sách bài hát yêu thích</string>
     <string name="title_exist_favorite">Bài hát đã có trong danh sách yêu thích ! </string>

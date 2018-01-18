@@ -47,9 +47,32 @@ public class SharePreferences {
         mSharedPreferences.edit().putString(TRACK, track).apply();
     }
 
+    public boolean addTrack(Track track) {
+        if (track == null) {
+            return false;
+        }
+        List<Track> tracks = getListTrack();
+        if (tracks == null) {
+            tracks = new ArrayList<>();
+            tracks.add(track);
+            SharePreferences.getInstance().putListTrack(new Gson().toJson(tracks));
+            return true;
+        } else {
+            for (Track trackTemp : tracks) {
+                if (track.getUri().equals(trackTemp.getUri())) {
+                    return false;
+                }
+            }
+            tracks.add(track);
+            SharePreferences.getInstance().putListTrack(new Gson().toJson(tracks));
+        }
+        return true;
+    }
+
     public List<Track> getListTrack() {
         String tracks = mSharedPreferences.getString(LIST_TRACK, null);
-        Type listType = new TypeToken<ArrayList<Track>>(){}.getType();
+        Type listType = new TypeToken<ArrayList<Track>>() {
+        }.getType();
         return new Gson().fromJson(tracks, listType);
     }
 
