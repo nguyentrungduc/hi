@@ -5,15 +5,21 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.framgia.soundclound.R;
 import com.framgia.soundclound.data.model.Track;
+import com.framgia.soundclound.data.source.local.SharePreferences;
 import com.framgia.soundclound.data.source.remote.TrackDownloadManager;
 import com.framgia.soundclound.data.source.repository.AlbumRepository;
 import com.framgia.soundclound.util.Constant;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 /**
  * Created by Sony on 1/10/2018.
@@ -23,6 +29,7 @@ public class MoreTrackViewModel extends BaseObservable {
     private Track mTrack;
     private Context mContext;
     private boolean mFavorite;
+    private static final String TAG = MoreTrackViewModel.class.toString();
 
     public MoreTrackViewModel(Context context, Track track) {
         mContext = context;
@@ -111,6 +118,20 @@ public class MoreTrackViewModel extends BaseObservable {
             TrackDownloadManager trackDownloadManager = new TrackDownloadManager(mContext, mTrack);
             trackDownloadManager.download();
         }
+    }
+
+    public void onClickAddToList(View view) {
+        List<Track> trackList = SharePreferences.getInstance().getListTrack();
+        int position = SharePreferences.getInstance().getIndex();
+        trackList.add(position + 1, mTrack);
+        SharePreferences.getInstance().putListTrack(new Gson().toJson(trackList));
+        Toast.makeText(mContext, "Đã thêm " + mTrack.getTitle() + " vào danh sách đang phát",
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void onClickAddToAlbum(View view) {
+
     }
 
 }

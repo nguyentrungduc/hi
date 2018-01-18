@@ -12,10 +12,10 @@
         android:background="@color/background_diaglog"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/dp_16"
-        android:layout_height="@dimen/dp_300">
+        android:layout_height="@dimen/dp_250">
 
         <ImageView
-            imgResource="@{viewModel.url}"
+            android:src="@mipmap/ic_launcher"
             android:contentDescription="@string/title_track"
             android:id="@+id/image_view_more"
             android:layout_marginTop="@dimen/dp_16"
@@ -78,37 +78,13 @@
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:contentDescription="@string/title_download"
-            android:src="@drawable/ic_file_download_black_24dp"
-            android:onClick="@{viewModel::onClickDownload}"
-            android:id="@+id/image_view_download"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="@dimen/dp_28"
-            android:layout_marginTop="@dimen/dp_14"
-            android:layout_marginBottom="@dimen/dp_24"
-            app:layout_constraintTop_toBottomOf="@id/image_view_like"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30" />
-
-        <TextView
-            android:textColor="@color/color_white"
-            android:text="@{viewModel.canDownLoad}"
-            android:layout_marginLeft="@dimen/dp_28"
-            android:layout_marginTop="@dimen/dp_16"
-            android:layout_marginBottom="@dimen/dp_24"
-            app:layout_constraintTop_toBottomOf="@id/text_view_like"
-            app:layout_constraintLeft_toRightOf="@id/image_view_download"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
             android:onClick="@{viewModel::onClickAddToList}"
             app:layout_constraintRight_toLeftOf="@id/tv_add_tolist"
             android:id="@+id/image_view_add_to_list"
             android:layout_marginTop="@dimen/dp_16"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="@dimen/dp_12"
-            app:layout_constraintTop_toBottomOf="@id/image_view_download"
+            app:layout_constraintTop_toBottomOf="@id/image_view_like"
             android:src="@drawable/ic_playlist_add_check_black_24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -119,7 +95,7 @@
             android:layout_marginTop="16dp"
             android:textColor="@color/color_white"
             android:id="@+id/tv_add_tolist"
-            app:layout_constraintTop_toBottomOf="@id/image_view_download"
+            app:layout_constraintTop_toBottomOf="@id/text_view_like"
             app:layout_constraintLeft_toRightOf="@id/image_view_add_to_list"
             android:text="@string/them_vao_ds"
             android:layout_width="wrap_content"

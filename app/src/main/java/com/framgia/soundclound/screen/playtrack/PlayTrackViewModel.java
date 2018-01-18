@@ -7,6 +7,8 @@ import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.os.IBinder;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -108,13 +110,30 @@ public class PlayTrackViewModel extends BaseObservable implements SeekBar.OnSeek
     }
 
     @BindingAdapter("setAni")
-    public static void setImage(CircleImageView imageView, boolean animation) {
-//        Animation mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.rotation);
+    public static  void setImage(CircleImageView imageView, boolean animation) {
+        Animation mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.rotate);
+        mAnimation.setRepeatMode(Animation.INFINITE);
+        imageView.startAnimation(mAnimation);
+//        mAnimation.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//
+//            }
+//        });
 //        if (animation) {
 //            mAnimation.reset();
-//            imageView.startAnimation(mAnimation);
 //        } else {
-//            mAnimation.cancel();
+//            mAnimation.reset();
 //        }
     }
 

@@ -17,10 +17,9 @@
         <ImageView
             android:id="@+id/imv_track"
             imgResource="@{viewModel.url}"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
             android:layout_marginStart="@dimen/dp_8"
-            android:background="@color/color_gray"
             android:contentDescription="@string/image_track"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
