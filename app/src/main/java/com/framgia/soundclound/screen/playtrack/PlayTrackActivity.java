@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.framgia.soundclound.R;
 import com.framgia.soundclound.data.model.Track;
@@ -48,6 +50,8 @@ public class PlayTrackActivity extends AppCompatActivity implements OnClickTrack
         mBroacast = new Broacast();
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 mBroacast, filter);
+//        Animation mAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+//        activityPlayTrackBinding.imageViewPlayTrack.setAnimation(mAnimation);
     }
 
 

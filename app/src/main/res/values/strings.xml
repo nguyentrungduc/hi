@@ -56,5 +56,9 @@
     <string name="img_notifi">img_notifi</string>
     <string name="title_add_to_album">Add to album</string>
     <string name="album_detail">Detail Album</string>
+    <string name="them_vao_ds">Thêm vào danh sách đang phát</string>
+    <string name="them_vao_album">Thêm vào album</string>
+    <string name="add_to_list">Đã thêm</string>
+    <string name="to_list">vào danh sách đang phát</string>
 
 </resources>
