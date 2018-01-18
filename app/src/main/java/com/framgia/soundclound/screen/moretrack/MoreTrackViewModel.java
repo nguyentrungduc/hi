@@ -120,11 +120,13 @@ public class MoreTrackViewModel extends BaseObservable {
 
 
     }
-    public void onClickUnFavorite(View view){
+
+    public void onClickUnFavorite(View view) {
         boolean resultRemoveTrack = AlbumRepository.getInstance(mContext)
                 .removeTrack(Constant.TRACKS_FAVORITE, mTrack);
         mCalback.onRemoveTrack(resultRemoveTrack);
     }
+
     public void onClickRemovePlayLIst(View view) {
         boolean resultRemoveTrack = AlbumRepository.getInstance(mContext)
                 .removeTrack(mIdAlbum, mTrack);
@@ -177,6 +179,7 @@ public class MoreTrackViewModel extends BaseObservable {
     private void handleAddPlaylisy(final Track track) {
         List<Album> albums = AlbumRepository.getInstance(mContext).getAllAlbum();
         CusDialog cusDialog = new CusDialog();
+        cusDialog.showDialog(mContext, albums);
         cusDialog.setCalback(new Calback() {
             @Override
             public void onResult(Album album) {
@@ -195,7 +198,7 @@ public class MoreTrackViewModel extends BaseObservable {
                 }
             }
         });
-        cusDialog.showDialog(mContext, albums);
+
 
     }
 

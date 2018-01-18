@@ -38,6 +38,8 @@ public class PlayTrackViewModel extends BaseObservable implements SeekBar.OnSeek
     private boolean mMusicBound = false;
     private OnClickTrackListener mOnClickTrackListener;
     private boolean mRuning = true;
+    private boolean mSuff;
+    private boolean mRepaet;
 
     public void setOnClickTrackListener(OnClickTrackListener onClickTrackListener) {
         mOnClickTrackListener = onClickTrackListener;
@@ -68,6 +70,30 @@ public class PlayTrackViewModel extends BaseObservable implements SeekBar.OnSeek
         mTracks = tracks;
         mIndexCurrentTrack = indexCurentTrack;
         setTrack(mTracks.get(indexCurentTrack));
+        setRepaet(SharePreferences.getInstance().getREpeat());
+        setSuff(SharePreferences.getInstance().getSuff());
+    }
+
+    @Bindable
+    public boolean isSuff() {
+        return mSuff;
+    }
+
+    public void setSuff(boolean suff) {
+        mSuff = suff;
+        notifyPropertyChanged(0);
+    }
+
+    @Bindable
+    public boolean isRepaet() {
+        return mRepaet;
+
+    }
+
+    public void setRepaet(boolean repaet) {
+        mRepaet = repaet;
+        notifyPropertyChanged(0);
+
     }
 
     @Bindable
@@ -116,6 +142,24 @@ public class PlayTrackViewModel extends BaseObservable implements SeekBar.OnSeek
             imageView.startAnimation(mAnimation);
         } else {
             mAnimation.cancel();
+        }
+    }
+
+    @BindingAdapter("setImageSuff")
+    public static void setImage(ImageView view, boolean suff) {
+        if (suff) {
+            view.setImageResource(R.drawable.ic_shuffle_red_24dp);
+        } else {
+            view.setImageResource(R.drawable.ic_shuffle_black_24dp);
+        }
+    }
+
+    @BindingAdapter("setImageRepeat")
+    public static void setImagerepeat(ImageView view, boolean repeat) {
+        if (repeat) {
+            view.setImageResource(R.drawable.ic_loop_red_24dp);
+        } else {
+            view.setImageResource(R.drawable.ic_loop_black_24dp);
         }
     }
 
@@ -212,22 +256,17 @@ public class PlayTrackViewModel extends BaseObservable implements SeekBar.OnSeek
     public void onClickShuffle(View view) {
         mMusicService.setShuffle();
         ImageView imageView = (ImageView) view;
-        if (mMusicService.isShuffle()) {
-            imageView.setImageResource(R.drawable.ic_shuffle_red_24dp);
-        } else {
-            imageView.setImageResource(R.drawable.ic_shuffle_black_24dp);
-        }
+        boolean suff = mMusicService.isShuffle();
+        SharePreferences.getInstance().putSuff(suff);
+        setSuff(suff);
 
     }
 
     public void onClickLoop(View view) {
         mMusicService.setRepeat();
-        ImageView imageView = (ImageView) view;
-        if (mMusicService.isRepeat()) {
-            imageView.setImageResource(R.drawable.ic_loop_red_24dp);
-        } else {
-            imageView.setImageResource(R.drawable.ic_loop_black_24dp);
-        }
+        boolean repeat = mMusicService.isRepeat();
+        SharePreferences.getInstance().putRepeat(repeat);
+        setRepaet(repeat);
     }
 
     public void onClickPrevious(View view) {

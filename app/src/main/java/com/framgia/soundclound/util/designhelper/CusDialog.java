@@ -31,7 +31,7 @@ public class CusDialog {
     public void showDialog(final Context context, List<Album> albums) {
         final AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);//,android.R.style.Theme_Holo_Light_Dialog_NoActionBar);
         builderSingle.setIcon(R.drawable.icon_music_all);
-        builderSingle.setTitle(" Select Album");
+        builderSingle.setTitle("Select Album");
         final AdapterAlbum albumAdapterAlbum = new AdapterAlbum(context, albums);
         LayoutInflater li = LayoutInflater.from(context);
         View view = li.inflate(R.layout.dialog_add_track_album, null);
@@ -39,7 +39,7 @@ public class CusDialog {
         ListView lv2 = (ListView) view.findViewById(R.id.lv_album_add_track);
         lv2.addHeaderView(view1);
         lv2.setAdapter(albumAdapterAlbum);
-        builderSingle.setNeutralButton(R.string.action_cancel,null);
+
         builderSingle.setView(view);
         final AlertDialog ad = builderSingle.show();
         lv2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,7 +55,7 @@ public class CusDialog {
                 ad.cancel();
             }
         });
-
+        builderSingle.setNeutralButton(R.string.action_cancel,null);
 
 
     }

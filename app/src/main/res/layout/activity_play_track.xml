@@ -60,8 +60,8 @@
             android:id="@+id/image_view_play_track"
             imgResource="@{viewModel.imageTrack}"
             setAni="@{viewModel.play}"
-            android:layout_width="@dimen/dp_250"
-            android:layout_height="@dimen/dp_250"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_200"
             android:layout_marginTop="@dimen/dp_16"
             android:contentDescription="@string/title_track"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -106,6 +106,7 @@
 
         <ImageView
             android:id="@+id/image_view_loop"
+            setImageRepeat="@{viewModel.repaet}"
             android:layout_width="@dimen/dp_36"
             android:layout_height="@dimen/dp_36"
             android:layout_marginBottom="@dimen/dp_12"
@@ -155,6 +156,7 @@
 
         <ImageView
             android:id="@+id/image_shuffle"
+            setImageSuff="@{viewModel.suff}"
             android:layout_width="@dimen/dp_36"
             android:layout_height="@dimen/dp_36"
             android:layout_marginBottom="@dimen/dp_12"

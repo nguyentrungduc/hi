@@ -4,6 +4,8 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
@@ -29,7 +31,7 @@ import java.util.logging.Logger;
  * service music
  */
 
-public class MusicService extends Service implements BaseMediaPlayer {
+public class MusicService extends Service implements BaseMediaPlayer  {
 
     private final IBinder mMusicBind = new MusicBinder();
     private MediaPlayer mPlayer;
@@ -214,31 +216,43 @@ public class MusicService extends Service implements BaseMediaPlayer {
 
     @Override
     public void next() {
-        mCurentTrack = SharePreferences.getInstance().getIndex();
-        mCurentTrack++;
-        if (mCurentTrack > (mTracks.size() - 1)) {
-            mCurentTrack = 0;
+        if (mShuffle) {
+            mCurentTrack = mRandom.nextInt((mTracks.size() - 1));
             SharePreferences.getInstance().putIndex(mCurentTrack);
             play();
         } else {
-            SharePreferences.getInstance().putIndex(mCurentTrack);
-            play();
+            mCurentTrack = SharePreferences.getInstance().getIndex();
+            mCurentTrack++;
+            if (mCurentTrack > (mTracks.size() - 1)) {
+                mCurentTrack = 0;
+                SharePreferences.getInstance().putIndex(mCurentTrack);
+                play();
+            } else {
+                SharePreferences.getInstance().putIndex(mCurentTrack);
+                play();
+            }
         }
     }
 
     @Override
     public void prev() {
-        mCurentTrack = SharePreferences.getInstance().getIndex();
-        mCurentTrack--;
-        if (mCurentTrack < 0) {
-            mCurentTrack = mTracks.size() - 1;
+        if (mShuffle) {
+            mCurentTrack = mRandom.nextInt((mTracks.size() - 1));
             SharePreferences.getInstance().putIndex(mCurentTrack);
             play();
         } else {
+            mCurentTrack = SharePreferences.getInstance().getIndex();
+            mCurentTrack--;
+            if (mCurentTrack < 0) {
+                mCurentTrack = mTracks.size() - 1;
+                SharePreferences.getInstance().putIndex(mCurentTrack);
+                play();
+            } else {
+                SharePreferences.getInstance().putIndex(mCurentTrack);
+                play();
+            }
             SharePreferences.getInstance().putIndex(mCurentTrack);
-            play();
         }
-        SharePreferences.getInstance().putIndex(mCurentTrack);
     }
 
     @Override
@@ -254,19 +268,12 @@ public class MusicService extends Service implements BaseMediaPlayer {
     }
 
     public void setShuffle() {
-        if (mShuffle) {
-            mShuffle = false;
-        } else {
-            mShuffle = true;
-        }
+        mShuffle = !mShuffle;
+
     }
 
     public void setRepeat() {
-        if (mRepeat) {
-            mRepeat = false;
-        } else {
-            mRepeat = true;
-        }
+        mRepeat = !mRepeat;
     }
 
     public void showNotifi() {
