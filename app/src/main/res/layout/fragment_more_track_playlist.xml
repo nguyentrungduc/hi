@@ -79,15 +79,14 @@
 
         <ImageView
             android:id="@+id/image_view_download"
-
             android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_30"
             android:layout_marginBottom="@dimen/dp_24"
             android:layout_marginLeft="@dimen/dp_28"
             android:layout_marginTop="@dimen/dp_14"
             android:contentDescription="@string/title_download"
-            android:onClick="@{viewModel::onClickDownload}"
-            android:src="@drawable/ic_file_download_black_24dp"
+            android:onClick="@{viewModel::onClickRemovePlayLIst}"
+            android:src="@android:drawable/ic_delete"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_view_like" />
 
@@ -97,7 +96,7 @@
             android:layout_marginBottom="@dimen/dp_24"
             android:layout_marginLeft="@dimen/dp_28"
             android:layout_marginTop="@dimen/dp_28"
-            android:text="@{viewModel.canDownLoad}"
+            android:text="@string/delete_track"
             android:textColor="@color/color_white"
             app:layout_constraintLeft_toRightOf="@id/image_view_download"
             app:layout_constraintTop_toBottomOf="@id/text_view_like" />
@@ -143,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_80"
             android:layout_marginTop="16dp"
-            android:text="@string/them_vao_album"
+            android:text="@string/them_vao_other_album"
             android:textColor="@color/color_white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintLeft_toRightOf="@id/image_view_add_to_album"

@@ -28,7 +28,7 @@ public class ItemFavoriteViewModel extends BaseObservable {
         if (mFavoriteClickListener == null) {
             return;
         }
-        mFavoriteClickListener.onTrackClick(mTrack, mPos);
+        mFavoriteClickListener.onTrackClick(mTrack, mPos , view);
     }
 
     public void onClickTrack(View view) {

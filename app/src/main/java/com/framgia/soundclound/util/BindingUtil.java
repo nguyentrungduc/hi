@@ -111,7 +111,7 @@ public class BindingUtil {
     @BindingAdapter("imgResource")
     public static void setImage(CircleImageView imageView, String urlImage) {
 //        if (urlImage == null) {
-        imageView.setImageResource(R.drawable.img_background_genres);
+        imageView.setImageResource(R.drawable.icon_disk);
 //        } else {
 //            Glide.with(imageView.getContext()).load(urlImage)
 //                    .into(imageView);

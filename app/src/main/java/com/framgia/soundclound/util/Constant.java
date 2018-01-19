@@ -19,6 +19,7 @@ public class Constant {
 
     public static final String EXTRA_GENRE = "com.framgia.soundcloud.EXTRA_GENRE_NAME";
     public static final String ARGUMENT_TRACK = "com.framgia.soundcloud.ARGUMENT_TRACK";
+    public static final String ARGUMENT_ID_ALBUM = "com.framgia.soundcloud.ARGUMENT_ID_ALBUM";
     public static final String EXTRA_ID_ALBUM = "com.framgia.soundcloud.EXTRA_ID_ALBUM";
     public static final int VALUE_ID_ALBUM_NULL = -1;
 
@@ -50,5 +51,5 @@ public class Constant {
     public static final String ACTION_DISMIS = "com.framgia.soundclound.action.action.dismis";
     public static final String ACTION_NOTIFI_CHANGE =
             "com.framgia.soundclound.action.action.change";
-    public static final String EXTRA_OPENT_ADDTRACT= "com.framgia.soundcloud.EXTRA_OPEN_ADD_TRACK";
+    public static final String EXTRA_OPENT_ADDTRACT = "com.framgia.soundcloud.EXTRA_OPEN_ADD_TRACK";
 }

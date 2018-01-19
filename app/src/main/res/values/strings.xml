@@ -33,6 +33,11 @@
     <string name="action_add">Add</string>
     <string name="action_remove">Remove</string>
     <string name="action_add_favorite">Add Favorite</string>
+    <string name="action_un_favorite">Remove Favorite</string>
+    <string name="action_add_playlist">Add Playlist</string>
+    <string name="action_add_playing">Add List Playing</string>
+    <string name="add_playing_su">Đã thêm vào danh sách phát ! </string>
+    <string name="add_playing_fl">Bài hát hiện đang có trong danh sách phát </string>
 
     <string name="title_add_favorite">Thêm vào danh sách bài hát yêu thích</string>
     <string name="title_exist_favorite">Bài hát đã có trong danh sách yêu thích ! </string>
@@ -55,5 +60,7 @@
     <string name="them_vao_album">Thêm vào album</string>
     <string name="add_to_list">Đã thêm</string>
     <string name="to_list">vào danh sách đang phát</string>
+    <string name="delete_track">Xóa Bỏ</string>
+    <string name="them_vao_other_album">Thêm Vào Playlist Khác</string>
 
 </resources>

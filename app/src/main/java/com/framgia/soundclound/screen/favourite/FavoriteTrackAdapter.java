@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.framgia.soundclound.R;
 import com.framgia.soundclound.data.model.Track;
+import com.framgia.soundclound.data.source.repository.AlbumRepository;
 import com.framgia.soundclound.databinding.ItemTrackFavoriteBinding;
 
 import java.util.ArrayList;
@@ -66,8 +67,9 @@ public class FavoriteTrackAdapter extends
         notifyDataSetChanged();
     }
 
-    public void updateData(int posChange) {
-        mTracks.remove(posChange);
+    public void updateData(List<Track> tracks) {
+        mTracks.clear();
+        mTracks.addAll(tracks);
         notifyDataSetChanged();
     }
 

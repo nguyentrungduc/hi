@@ -1,5 +1,7 @@
 package com.framgia.soundclound.screen.favourite;
 
+import android.view.View;
+
 import com.framgia.soundclound.data.model.Track;
 
 /**
@@ -8,5 +10,5 @@ import com.framgia.soundclound.data.model.Track;
 
 public interface FavoriteClickListener {
 
-    void onTrackClick(Track track, int posChange);
+    void onTrackClick(Track track, int posChange, View view);
 }

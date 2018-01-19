@@ -22,6 +22,8 @@ public class SharePreferences {
     private static final String TRACK = "track";
     private static final String INDEX = "index";
     private static final String GENRE = "genre";
+    private static final String SHUFFLE = "SHUFFLE";
+    private static final String REPEAT = "REPEAT";
 
     private SharedPreferences mSharedPreferences;
 
@@ -47,9 +49,32 @@ public class SharePreferences {
         mSharedPreferences.edit().putString(TRACK, track).apply();
     }
 
+    public boolean addTrack(Track track) {
+        if (track == null) {
+            return false;
+        }
+        List<Track> tracks = getListTrack();
+        if (tracks == null) {
+            tracks = new ArrayList<>();
+            tracks.add(track);
+            SharePreferences.getInstance().putListTrack(new Gson().toJson(tracks));
+            return true;
+        } else {
+            for (Track trackTemp : tracks) {
+                if (track.getUri().equals(trackTemp.getUri())) {
+                    return false;
+                }
+            }
+            tracks.add(track);
+            SharePreferences.getInstance().putListTrack(new Gson().toJson(tracks));
+        }
+        return true;
+    }
+
     public List<Track> getListTrack() {
         String tracks = mSharedPreferences.getString(LIST_TRACK, null);
-        Type listType = new TypeToken<ArrayList<Track>>(){}.getType();
+        Type listType = new TypeToken<ArrayList<Track>>() {
+        }.getType();
         return new Gson().fromJson(tracks, listType);
     }
 
@@ -61,8 +86,24 @@ public class SharePreferences {
         mSharedPreferences.edit().putInt(INDEX, index).apply();
     }
 
+    public void putSuff(boolean shuff) {
+        mSharedPreferences.edit().putBoolean(SHUFFLE, shuff).apply();
+    }
+
+    public void putRepeat(boolean repaet) {
+        mSharedPreferences.edit().putBoolean(REPEAT, repaet).apply();
+    }
+
     public int getIndex() {
         return mSharedPreferences.getInt(INDEX, Constant.INDEX_DEFAULTE);
+    }
+
+    public boolean getSuff() {
+        return mSharedPreferences.getBoolean(SHUFFLE, false);
+    }
+
+    public boolean getREpeat() {
+        return mSharedPreferences.getBoolean(REPEAT, false);
     }
 
     public void putGenre(String genre) {

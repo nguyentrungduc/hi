@@ -3,10 +3,14 @@ package com.framgia.soundclound.screen.favourite;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.framgia.soundclound.data.model.Track;
 import com.framgia.soundclound.data.source.local.SharePreferences;
 import com.framgia.soundclound.data.source.repository.AlbumRepository;
+import com.framgia.soundclound.screen.moretrack.Calback;
+import com.framgia.soundclound.screen.moretrack.MoreTrackFavoriteFragment;
 import com.framgia.soundclound.screen.playtrack.PlayTrackActivity;
 import com.framgia.soundclound.util.Constant;
 import com.google.gson.Gson;
@@ -53,11 +57,22 @@ public class FavoriteViewModel extends BaseObservable implements ItemClickListen
     }
 
     @Override
-    public void onTrackClick(Track track, int posChange) {
-        boolean resultRemoveTrack = AlbumRepository.getInstance(mContext)
-                .removeTrack(Constant.TRACKS_FAVORITE, track);
-        if (resultRemoveTrack) {
-            mFavoriteTrackAdapter.updateData(posChange);
-        }
+    public void onTrackClick(Track track, final int posChange, View view) {
+        MoreTrackFavoriteFragment.newInstance(track,
+                new Calback() {
+                    @Override
+                    public void onRemoveTrack(boolean result) {
+                        if (result) {
+                            mFavoriteTrackAdapter.updateData(AlbumRepository
+                                    .getInstance(mContext)
+                                    .getAllTrack(Constant.TRACKS_FAVORITE));
+                        }
+                    }
+                })
+                .show(((AppCompatActivity) mContext).
+                        getSupportFragmentManager(), null);
+
+
     }
+
 }
